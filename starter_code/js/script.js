@@ -1,52 +1,54 @@
 $(document).ready(function(){
 
-// user imput and click submit button
-	$("#submit-btn").click(VarCity);
-	function VarCity(){
-		event.preventDefault();
-// grab "city name" user types
-		var city  = $("#city-type").val();
-// reasign "city" to lowerCase / remove spaces before and after the city name.
-		city = city.toLowerCase();  
-		city = city.trim();
-		// "replace" is not working...
-		city = city.replace("/\/\/","");
-//Reset the user input field after it is submitted
-		$("#city-type").val("");
+// set the cities's value using an array
+var cities = ["NYC","SF","LA","ATX","SYD"];
 
-		console.log("city is shown...."+city);
-//check city name, if matched Display city image
-		if (city == "new york" || city == "new york city" || city == "nyc"){			
-			$("body").attr("class","nyc");
-		}
+// make a loop for "cities" and create a drop-down menu
+var index;
+for (index = 0; index < cities.length; index = index + 1){
+	console.log(cities[index]);
+	$("select").append("<option>" +cities[index]+"</option>")
 
-		else if (city == "san francisco" || city == "sf" || city == "bay area") {
-			$("body").attr("class","sf");
-		}
+}
 
-		else if (city == "los angeles" || city == "la" || city == "lax") {
-			$("body").addClass("la");
-		}
+// grab a value for the user's selection and change the background accordingly.
 
-		else if (city == "austin" || city == "atx") {
-			$("body").addClass("austin");
-		}
+$("select").on("change",function(){
+	if ($(this).val() == "NYC"){		
+		$("body").attr("class","nyc");
+	}
 
-		else if (city == "sydney" || city == "syd") {
-			$("body").addClass("sydney");
-		}
+	else if ($(this).val() == "SF"){	
+		$("body").attr("class","sf");
+	}
 
-// If a user types in an invalid city show citypix_skyline.jpg image and display the message "We currently don't have images for this city. Check back later!"
-		else {
-			$("body").addClass("citypix");
-			alert("We currently don't have images for this city. Check back later!");
-			
-		}
+	else if ($(this).val() == "LA"){	
+		$("body").attr("class","la ");
+	}
 
-		}
+	else if ($(this).val() == "ATX"){	
+		$("body").attr("class","austin");
+	}
 
+	else if ($(this).val() == "SYD"){	
+		$("body").attr("class","sydney");
+	}
 
 });
+
+});
+
+
+
+// Bonus
+
+// Read up on your own and incorporate some more styles on the drop down menu
+// While the dropdown menu should update the page 
+// in the same way it did after your work last week, 
+// take a look at what your final product should look 
+// like with a dropdown menu: -->
+
+
 
 
 
